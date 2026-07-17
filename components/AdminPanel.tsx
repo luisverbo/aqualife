@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { IMAGE_SLOTS, type ImageSlotKey } from "@/lib/imageSlots";
+import { prepareImage } from "@/lib/prepareImage";
 
 type SlotState = {
   url?: string;
@@ -26,9 +27,17 @@ export default function AdminPanel() {
   async function uploadFile(slot: ImageSlotKey, file: File) {
     setSlots((s) => ({ ...s, [slot]: { status: "uploading" } }));
     try {
+      // Otimiza no navegador (redimensiona + WebP) para deixar leve e
+      // evitar o limite de ~4,5 MB das funções da Vercel.
+      const optimized = await prepareImage(file, slot === "og" ? 1200 : 1600);
+      if (optimized.size > 4 * 1024 * 1024) {
+        throw new Error(
+          "Imagem muito grande mesmo após otimizar. Envie um JPG/PNG/WebP.",
+        );
+      }
       const body = new FormData();
       body.append("slot", slot);
-      body.append("file", file);
+      body.append("file", optimized);
       const res = await fetch("/api/admin/upload", {
         method: "POST",
         headers: { "x-admin-password": password },
