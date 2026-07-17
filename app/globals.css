@@ -3,11 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --agua-profunda: #0e3a45;
-  --azul-piscina: #2aa7a0;
-  --pedra: #e4d8be;
-  --papel: #f7f4ee;
-  --tinta: #16211f;
+  --agua-profunda: #03212e;
+  --oceano: #021821;
+  --azul-piscina: #00b8d9;
+  --ciano: #22e1ff;
+  --verde-vida: #9be15d;
+  --pedra: #dcedf2;
+  --papel: #f2fafc;
+  --tinta: #052330;
 }
 
 * {
@@ -20,30 +23,88 @@ html {
 }
 
 body {
-  background-color: var(--papel);
+  background-color: var(--oceano);
   color: var(--tinta);
   overflow-x: hidden;
 }
 
 ::selection {
   background: var(--azul-piscina);
-  color: #fff;
+  color: #021821;
 }
 
-/* Texto com degradê de destaque */
+/* Texto com degradê animado (ciano → azul) — assinatura do site */
 .text-gradient {
-  background: linear-gradient(120deg, #2aa7a0 0%, #7fd4ce 60%, #e4d8be 100%);
+  background: linear-gradient(120deg, #22e1ff 0%, #00b8d9 40%, #9be15d 100%);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: gradient-x 6s ease infinite;
+}
+
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* Cartão de vidro sobre fundos escuros */
 .glass {
-  background: rgba(247, 244, 238, 0.06);
-  border: 1px solid rgba(247, 244, 238, 0.12);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Grade técnica sutil (fundos escuros) */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 184, 217, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 184, 217, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent);
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 40%,
+    black,
+    transparent
+  );
+}
+
+/* Borda com degradê (efeito "big tech") */
+.gradient-border {
+  position: relative;
+  background:
+    linear-gradient(var(--oceano), var(--oceano)) padding-box,
+    linear-gradient(135deg, rgba(34, 225, 255, 0.6), rgba(0, 184, 217, 0.1), rgba(155, 225, 93, 0.4))
+      border-box;
+  border: 1px solid transparent;
+}
+
+/* Spotlight que segue o mouse nos cards (CSS vars setadas via JS) */
+.spotlight {
+  position: relative;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(34, 225, 255, 0.12),
+    transparent 55%
+  );
+  pointer-events: none;
+}
+.spotlight:hover::before {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -4,7 +4,7 @@ import { IconWhatsApp } from "./Icons";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-agua-profunda">
+    <footer className="border-t border-white/10 bg-oceano">
       <div className="mx-auto max-w-6xl px-6 py-14 sm:px-8">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">

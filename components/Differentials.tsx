@@ -1,5 +1,6 @@
 import Counter from "./Counter";
 import Reveal from "./Reveal";
+import SpotlightCard from "./SpotlightCard";
 import {
   IconWaves,
   IconShield,
@@ -8,83 +9,102 @@ import {
   IconStar,
 } from "./Icons";
 
-const STATS = [
-  { value: <Counter to={23} suffix=" anos" />, label: "de mercado no Rio de Janeiro" },
-  { value: <Counter to={100} suffix="%" />, label: "guardiões certificados pelo GMAR" },
-  {
-    value: (
-      <span className="inline-flex items-center gap-1.5">
-        5.0 <IconStar className="h-6 w-6 text-azul-piscina" />
-      </span>
-    ),
-    label: "avaliação dos clientes no Google",
-  },
-  { value: <Counter to={365} suffix=" dias" />, label: "de cobertura, com guardião reserva" },
-];
-
-const FEATURES = [
-  {
-    icon: IconWaves,
-    title: "+23 anos de experiência",
-    text: "Mais de duas décadas cuidando de piscinas no Rio de Janeiro.",
-  },
-  {
-    icon: IconShield,
-    title: "Guardiões certificados",
-    text: "Salva-vidas certificados pelo GMAR — Corpo de Bombeiros.",
-  },
-  {
-    icon: IconDrop,
-    title: "Equipe formada pela FEEMA",
-    text: "Tratamento químico de água feito por profissionais qualificados.",
-  },
-  {
-    icon: IconBuildings,
-    title: "Atendimento completo",
-    text: "Condomínios, clubes sociais/esportivos e parques aquáticos.",
-  },
-];
-
 export default function Differentials() {
   return (
-    <section className="relative bg-papel">
-      <div className="mx-auto max-w-6xl px-6 pt-14 sm:px-8 sm:pt-0">
-        {/* Faixa de números — sobrepõe o hero só no desktop (evita encavalar no mobile) */}
-        <Reveal className="sm:-mt-16">
-          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-white/10 shadow-2xl shadow-agua-profunda/20 ring-1 ring-white/10 lg:grid-cols-4">
-            {STATS.map((s, i) => (
-              <div
-                key={i}
-                className="bg-agua-profunda px-6 py-8 text-center sm:py-9"
-              >
-                <div className="font-heading text-3xl font-bold text-papel sm:text-4xl">
-                  {s.value}
-                </div>
-                <p className="mx-auto mt-2 max-w-[16ch] font-body text-xs leading-snug text-papel/70 sm:text-sm">
-                  {s.label}
-                </p>
-              </div>
-            ))}
-          </div>
+    <section className="relative bg-oceano">
+      <div
+        aria-hidden="true"
+        className="animate-drift absolute -right-32 top-20 h-96 w-96 rounded-full bg-azul-piscina/10 blur-[100px]"
+      />
+
+      <div className="relative mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-28">
+        <Reveal className="max-w-2xl">
+          <span className="font-mono text-xs font-medium uppercase tracking-[0.25em] text-azul-piscina">
+            Por que a Aqualife
+          </span>
+          <h2 className="mt-3 font-heading text-3xl font-bold leading-tight text-papel sm:text-5xl">
+            Números de quem é <span className="text-gradient">grande</span> no
+            que faz
+          </h2>
         </Reveal>
 
-        {/* Cartões de diferenciais */}
-        <div className="grid grid-cols-1 gap-5 py-16 sm:grid-cols-2 sm:py-20 lg:grid-cols-4">
-          {FEATURES.map((f, i) => (
-            <Reveal key={f.title} delay={i * 80}>
-              <div className="group h-full rounded-2xl border border-tinta/10 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-azul-piscina/40 hover:shadow-xl hover:shadow-azul-piscina/10">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-azul-piscina/10 text-azul-piscina transition-colors group-hover:bg-azul-piscina group-hover:text-papel">
-                  <f.icon className="h-6 w-6" />
-                </span>
-                <h3 className="mt-5 font-heading text-lg font-bold text-tinta">
-                  {f.title}
-                </h3>
-                <p className="mt-2 font-body text-sm leading-relaxed text-tinta/70">
-                  {f.text}
+        {/* Bento grid */}
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Card grande — 23 anos */}
+          <Reveal className="sm:col-span-2 lg:row-span-2">
+            <SpotlightCard className="gradient-border group relative flex h-full min-h-[16rem] flex-col justify-between overflow-hidden rounded-3xl p-8">
+              <div
+                aria-hidden="true"
+                className="animate-aurora absolute -right-16 -top-16 h-64 w-64 rounded-full bg-azul-piscina/20 blur-[80px]"
+              />
+              <IconWaves className="h-8 w-8 text-azul-piscina" />
+              <div>
+                <div className="font-heading text-7xl font-bold text-papel sm:text-8xl">
+                  <Counter to={23} />
+                  <span className="text-gradient">+</span>
+                </div>
+                <p className="mt-2 font-body text-lg text-papel/75">
+                  anos cuidando de piscinas no Rio de Janeiro — desde 2003.
                 </p>
               </div>
-            </Reveal>
-          ))}
+            </SpotlightCard>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <SpotlightCard className="glass flex h-full flex-col justify-between rounded-3xl p-6">
+              <IconShield className="h-7 w-7 text-azul-piscina" />
+              <div className="mt-8">
+                <div className="font-heading text-4xl font-bold text-papel">
+                  <Counter to={100} suffix="%" />
+                </div>
+                <p className="mt-1.5 font-body text-sm text-papel/70">
+                  dos guardiões certificados pelo GMAR (Corpo de Bombeiros)
+                </p>
+              </div>
+            </SpotlightCard>
+          </Reveal>
+
+          <Reveal delay={140}>
+            <SpotlightCard className="glass flex h-full flex-col justify-between rounded-3xl p-6">
+              <IconStar className="h-7 w-7 text-verde-vida" />
+              <div className="mt-8">
+                <div className="font-heading text-4xl font-bold text-papel">
+                  5.0
+                </div>
+                <p className="mt-1.5 font-body text-sm text-papel/70">
+                  nota dos clientes nas avaliações do Google
+                </p>
+              </div>
+            </SpotlightCard>
+          </Reveal>
+
+          <Reveal delay={200}>
+            <SpotlightCard className="glass flex h-full flex-col justify-between rounded-3xl p-6">
+              <IconDrop className="h-7 w-7 text-azul-piscina" />
+              <div className="mt-8">
+                <div className="font-heading text-4xl font-bold text-papel">
+                  FEEMA
+                </div>
+                <p className="mt-1.5 font-body text-sm text-papel/70">
+                  equipe formada em tratamento químico de água
+                </p>
+              </div>
+            </SpotlightCard>
+          </Reveal>
+
+          <Reveal delay={260}>
+            <SpotlightCard className="glass flex h-full flex-col justify-between rounded-3xl p-6">
+              <IconBuildings className="h-7 w-7 text-azul-piscina" />
+              <div className="mt-8">
+                <div className="font-heading text-4xl font-bold text-papel">
+                  <Counter to={365} />
+                </div>
+                <p className="mt-1.5 font-body text-sm text-papel/70">
+                  dias por ano de cobertura, com guardião reserva incluso
+                </p>
+              </div>
+            </SpotlightCard>
+          </Reveal>
         </div>
       </div>
     </section>

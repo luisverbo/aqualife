@@ -25,7 +25,7 @@ export default function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "border-b border-white/10 bg-agua-profunda/80 py-3 backdrop-blur-md"
+          ? "border-b border-white/10 bg-oceano/70 py-3 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent py-5"
       }`}
     >
@@ -48,7 +48,7 @@ export default function Header() {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full bg-azul-piscina px-5 py-2.5 font-body text-sm font-semibold text-agua-profunda transition-transform hover:scale-105 active:scale-95"
+          className="rounded-full bg-azul-piscina px-5 py-2.5 font-body text-sm font-semibold text-oceano shadow-[0_0_24px_rgba(0,184,217,0.35)] transition-all hover:scale-105 hover:shadow-[0_0_36px_rgba(34,225,255,0.5)] active:scale-95"
         >
           Orçamento
         </a>

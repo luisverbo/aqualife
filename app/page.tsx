@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Ticker from "@/components/Ticker";
 import Differentials from "@/components/Differentials";
-import LaneDivider from "@/components/LaneDivider";
 import Services from "@/components/Services";
 import Authority from "@/components/Authority";
 import SocialProof from "@/components/SocialProof";
@@ -15,8 +15,8 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Ticker />
         <Differentials />
-        <LaneDivider />
         <Services />
         <Authority />
         <SocialProof />

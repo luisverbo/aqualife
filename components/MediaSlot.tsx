@@ -14,9 +14,9 @@ type MediaSlotProps = {
 };
 
 const FALLBACKS: Record<number, string> = {
-  0: "linear-gradient(150deg, #0E3A45 0%, #2AA7A0 100%)",
-  1: "linear-gradient(150deg, #124a56 0%, #1C7A74 100%)",
-  2: "linear-gradient(150deg, #0E3A45 0%, #16211F 100%)",
+  0: "linear-gradient(150deg, #03212E 0%, #00B8D9 130%)",
+  1: "linear-gradient(150deg, #032a3a 0%, #0090AC 130%)",
+  2: "linear-gradient(150deg, #03212E 0%, #22E1FF 180%)",
 };
 
 /**
