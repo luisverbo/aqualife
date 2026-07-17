@@ -11,7 +11,7 @@ import {
 
 export default function Differentials() {
   return (
-    <section className="relative bg-oceano">
+    <section className="relative overflow-hidden bg-oceano">
       <div
         aria-hidden="true"
         className="animate-drift absolute -right-32 top-20 h-96 w-96 rounded-full bg-azul-piscina/10 blur-[100px]"

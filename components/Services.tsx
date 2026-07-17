@@ -30,7 +30,10 @@ const LANES = [
 
 export default function Services() {
   return (
-    <section id="servicos" className="relative scroll-mt-24 bg-oceano">
+    <section
+      id="servicos"
+      className="relative scroll-mt-24 overflow-hidden bg-oceano"
+    >
       <div
         aria-hidden="true"
         className="animate-drift-slow absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-ciano/10 blur-[110px]"
