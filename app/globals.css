@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --agua-profunda: #0e3a45;
+  --azul-piscina: #2aa7a0;
+  --pedra: #e4d8be;
+  --papel: #f7f4ee;
+  --tinta: #16211f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--papel);
+  color: var(--tinta);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-lane-ripple {
+    animation: none;
+  }
+}
