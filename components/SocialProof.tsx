@@ -3,20 +3,35 @@ import { IconStar } from "./Icons";
 
 /*
   ─────────────────────────────────────────────────────────────────────
-  PROVA SOCIAL — onde plugar o widget de avaliações do Google (nota 5.0)
+  PROVA SOCIAL — depoimentos
   ─────────────────────────────────────────────────────────────────────
-  Substitua os cartões de placeholder abaixo pelo embed real. Opções:
-  1. Widget oficial do Google Business Profile / Google Reviews.
-  2. Um serviço de reviews (Elfsight, Trustmania, etc.) — cole o <script>
-     no app/layout.tsx e o container aqui.
-  3. Um componente client que consome a Places API e renderiza os cards.
-  Basta manter a grade `.grid` abaixo e trocar o conteúdo dos <article>.
+  Os textos abaixo são EXEMPLOS ilustrativos — troque pelos depoimentos
+  reais dos seus clientes (ou pelas avaliações do Google). Basta editar
+  o array TESTIMONIALS.
+
+  Para plugar o widget oficial de avaliações do Google no lugar, substitua
+  a grade `.grid` pelo embed (Google Business Profile, Elfsight, etc.).
 */
 
-const PLACEHOLDERS = [
-  { name: "Síndico · Condomínio", role: "Barra da Tijuca" },
-  { name: "Administradora", role: "Zona Sul" },
-  { name: "Clube esportivo", role: "Rio de Janeiro" },
+const TESTIMONIALS = [
+  {
+    quote:
+      "Trocamos pela Aqualife e o condomínio finalmente ficou dentro das normas do GMAR. Guardião pontual, água sempre cristalina e zero dor de cabeça pra administração.",
+    name: "Síndico · Condomínio",
+    role: "Barra da Tijuca",
+  },
+  {
+    quote:
+      "Atendem vários prédios que administramos. Documentação do CBMERJ em dia e guardião reserva quando alguém falta — nunca ficamos descobertos. Recomendo.",
+    name: "Administradora",
+    role: "Zona Sul",
+  },
+  {
+    quote:
+      "23 anos de experiência fazem diferença. Tratamento de água impecável mesmo no verão cheio e uma equipe muito profissional.",
+    name: "Clube esportivo",
+    role: "Rio de Janeiro",
+  },
 ];
 
 export default function SocialProof() {
@@ -39,7 +54,7 @@ export default function SocialProof() {
         </Reveal>
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {PLACEHOLDERS.map((p, i) => (
+          {TESTIMONIALS.map((t, i) => (
             <Reveal key={i} delay={i * 90}>
               <article className="flex h-full flex-col justify-between rounded-2xl bg-papel p-7 shadow-sm ring-1 ring-tinta/5">
                 <div>
@@ -48,22 +63,19 @@ export default function SocialProof() {
                       <IconStar key={s} className="h-4 w-4" />
                     ))}
                   </div>
-                  {/* Depoimento real entra aqui */}
-                  <div className="mt-4 space-y-2">
-                    <div className="h-2.5 w-full rounded-full bg-tinta/10" />
-                    <div className="h-2.5 w-11/12 rounded-full bg-tinta/10" />
-                    <div className="h-2.5 w-3/4 rounded-full bg-tinta/10" />
-                  </div>
+                  <p className="mt-4 font-body text-sm leading-relaxed text-tinta/80">
+                    “{t.quote}”
+                  </p>
                 </div>
                 <div className="mt-6 flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-azul-piscina/15 font-heading text-sm font-bold text-azul-piscina">
-                    {p.name.charAt(0)}
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-azul-piscina/15 font-heading text-sm font-bold text-azul-piscina">
+                    {t.name.charAt(0)}
                   </span>
                   <div className="text-left">
                     <p className="font-body text-sm font-semibold text-tinta">
-                      {p.name}
+                      {t.name}
                     </p>
-                    <p className="font-body text-xs text-tinta/60">{p.role}</p>
+                    <p className="font-body text-xs text-tinta/60">{t.role}</p>
                   </div>
                 </div>
               </article>
