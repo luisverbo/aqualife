@@ -20,7 +20,9 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-lane-ripple {
+  .animate-lane-ripple,
+  .animate-hero-sway,
+  .animate-hero-shimmer {
     animation: none;
   }
 }

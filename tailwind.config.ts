@@ -25,9 +25,19 @@ const config: Config = {
           "0%, 100%": { transform: "translateX(0)" },
           "50%": { transform: "translateX(-6%)" },
         },
+        "hero-sway": {
+          "0%, 100%": { transform: "translateX(0) skewX(0deg)" },
+          "50%": { transform: "translateX(-3%) skewX(-1deg)" },
+        },
+        "hero-shimmer": {
+          "0%, 100%": { opacity: "0.35", transform: "translate3d(0,0,0)" },
+          "50%": { opacity: "0.6", transform: "translate3d(4%,2%,0)" },
+        },
       },
       animation: {
         "lane-ripple": "lane-ripple 8s ease-in-out infinite",
+        "hero-sway": "hero-sway 14s ease-in-out infinite",
+        "hero-shimmer": "hero-shimmer 11s ease-in-out infinite",
       },
     },
   },

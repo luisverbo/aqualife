@@ -3,30 +3,55 @@ import { WHATSAPP_URL } from "@/lib/constants";
 export default function Hero() {
   return (
     <section className="relative flex min-h-[100svh] w-full items-end overflow-hidden bg-agua-profunda">
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        poster="/images/pool-1.jpg"
-        aria-hidden="true"
-      >
-        <source src="/hero-video.mp4" type="video/mp4" />
-      </video>
+      {/*
+        Fundo do hero em CSS puro (sem vídeo/imagem externa): água profunda
+        em degradê + raias da piscina com leve ondulação de luz.
+        Para trocar por uma foto real depois, basta adicionar um
+        <img src="/images/hero.jpg" .../> (ou <video>) absolute inset-0
+        object-cover ANTES do overlay, mantendo os gradientes por cima.
+      */}
 
+      {/* Base — profundidade da água */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-agua-profunda via-agua-profunda/60 to-agua-profunda/10"
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(155deg, #0E3A45 0%, #0B2F38 45%, #16211F 100%)",
+        }}
       />
+
+      {/* Raias da piscina — bandas verticais em tons de azul, com sway suave */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-agua-profunda/20"
+        className="animate-hero-sway absolute -left-[8%] top-0 h-full w-[116%]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(100deg, rgba(42,167,160,0.00) 0px, rgba(42,167,160,0.00) 46px, rgba(42,167,160,0.14) 46px, rgba(42,167,160,0.14) 96px), repeating-linear-gradient(100deg, rgba(247,244,238,0.00) 0px, rgba(247,244,238,0.00) 90px, rgba(247,244,238,0.05) 90px, rgba(247,244,238,0.05) 94px)",
+        }}
+      />
+
+      {/* Cáusticas / luz na água — brilho suave que se move */}
+      <div
+        aria-hidden="true"
+        className="animate-hero-shimmer absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(60% 45% at 25% 20%, rgba(42,167,160,0.35) 0%, transparent 60%), radial-gradient(55% 40% at 80% 15%, rgba(228,216,190,0.18) 0%, transparent 55%)",
+        }}
+      />
+
+      {/* Overlay escuro na base pra legibilidade do texto */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-t from-agua-profunda via-agua-profunda/55 to-transparent"
       />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-16 pt-40 sm:px-8 sm:pb-24 sm:pt-56">
-        <h1 className="max-w-3xl font-heading text-4xl font-bold leading-tight text-papel sm:text-5xl md:text-6xl">
+        <span className="font-mono text-xs font-medium uppercase tracking-[0.25em] text-azul-piscina">
+          Rio de Janeiro · desde 2003
+        </span>
+        <h1 className="mt-4 max-w-3xl font-heading text-4xl font-bold leading-tight text-papel sm:text-5xl md:text-6xl">
           Sua piscina cuidada por quem é referência há mais de 23 anos no Rio
           de Janeiro
         </h1>
