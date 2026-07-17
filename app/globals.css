@@ -10,6 +10,11 @@
   --tinta: #16211f;
 }
 
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -17,12 +22,37 @@ html {
 body {
   background-color: var(--papel);
   color: var(--tinta);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--azul-piscina);
+  color: #fff;
+}
+
+/* Texto com degradê de destaque */
+.text-gradient {
+  background: linear-gradient(120deg, #2aa7a0 0%, #7fd4ce 60%, #e4d8be 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Cartão de vidro sobre fundos escuros */
+.glass {
+  background: rgba(247, 244, 238, 0.06);
+  border: 1px solid rgba(247, 244, 238, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-lane-ripple,
-  .animate-hero-sway,
-  .animate-hero-shimmer {
-    animation: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }

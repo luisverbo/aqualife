@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "Aqualife Piscinas",
     images: [
       {
-        url: "/images/pool-1.jpg",
+        url: "/images/og.jpg",
         width: 1200,
         height: 630,
         alt: "Piscina cuidada pela Aqualife",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Aqualife Piscinas | Manutenção e Guardiões Certificados no Rio de Janeiro",
     description: DESCRIPTION,
-    images: ["/images/pool-1.jpg"],
+    images: ["/images/og.jpg"],
   },
 };
 
