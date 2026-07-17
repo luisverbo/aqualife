@@ -48,9 +48,9 @@ const FEATURES = [
 export default function Differentials() {
   return (
     <section className="relative bg-papel">
-      <div className="mx-auto max-w-6xl px-6 sm:px-8">
-        {/* Faixa de números — sobrepõe o hero */}
-        <Reveal className="-mt-14 sm:-mt-16">
+      <div className="mx-auto max-w-6xl px-6 pt-14 sm:px-8 sm:pt-0">
+        {/* Faixa de números — sobrepõe o hero só no desktop (evita encavalar no mobile) */}
+        <Reveal className="sm:-mt-16">
           <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-white/10 shadow-2xl shadow-agua-profunda/20 ring-1 ring-white/10 lg:grid-cols-4">
             {STATS.map((s, i) => (
               <div

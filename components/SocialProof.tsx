@@ -1,40 +1,26 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Reveal from "./Reveal";
 import { IconStar } from "./Icons";
-
-/*
-  ─────────────────────────────────────────────────────────────────────
-  PROVA SOCIAL — depoimentos
-  ─────────────────────────────────────────────────────────────────────
-  Os textos abaixo são EXEMPLOS ilustrativos — troque pelos depoimentos
-  reais dos seus clientes (ou pelas avaliações do Google). Basta editar
-  o array TESTIMONIALS.
-
-  Para plugar o widget oficial de avaliações do Google no lugar, substitua
-  a grade `.grid` pelo embed (Google Business Profile, Elfsight, etc.).
-*/
-
-const TESTIMONIALS = [
-  {
-    quote:
-      "Trocamos pela Aqualife e o condomínio finalmente ficou dentro das normas do GMAR. Guardião pontual, água sempre cristalina e zero dor de cabeça pra administração.",
-    name: "Síndico · Condomínio",
-    role: "Barra da Tijuca",
-  },
-  {
-    quote:
-      "Atendem vários prédios que administramos. Documentação do CBMERJ em dia e guardião reserva quando alguém falta — nunca ficamos descobertos. Recomendo.",
-    name: "Administradora",
-    role: "Zona Sul",
-  },
-  {
-    quote:
-      "23 anos de experiência fazem diferença. Tratamento de água impecável mesmo no verão cheio e uma equipe muito profissional.",
-    name: "Clube esportivo",
-    role: "Rio de Janeiro",
-  },
-];
+import { DEFAULT_TESTIMONIALS, type Testimonial } from "@/lib/testimonials";
 
 export default function SocialProof() {
+  const [items, setItems] = useState<Testimonial[]>(DEFAULT_TESTIMONIALS);
+
+  useEffect(() => {
+    let active = true;
+    fetch("/api/testimonials")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (active && Array.isArray(d) && d.length > 0) setItems(d);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
   return (
     <section id="depoimentos" className="scroll-mt-24 bg-pedra">
       <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-28">
@@ -53,9 +39,9 @@ export default function SocialProof() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {TESTIMONIALS.map((t, i) => (
-            <Reveal key={i} delay={i * 90}>
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((t, i) => (
+            <Reveal key={i} delay={i * 80}>
               <article className="flex h-full flex-col justify-between rounded-2xl bg-papel p-7 shadow-sm ring-1 ring-tinta/5">
                 <div>
                   <div className="flex gap-0.5 text-azul-piscina">
@@ -69,7 +55,7 @@ export default function SocialProof() {
                 </div>
                 <div className="mt-6 flex items-center gap-3">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-azul-piscina/15 font-heading text-sm font-bold text-azul-piscina">
-                    {t.name.charAt(0)}
+                    {t.name.charAt(0) || "•"}
                   </span>
                   <div className="text-left">
                     <p className="font-body text-sm font-semibold text-tinta">

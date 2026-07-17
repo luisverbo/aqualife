@@ -19,9 +19,10 @@ export async function GET() {
     const map: Record<string, string> = {};
     for (const b of blobs) {
       const key = b.pathname.replace(BLOB_PREFIX, "");
-      // A URL do Blob é estável (addRandomSuffix:false) e já vem versionada
-      // por conteúdo; usamos direto.
-      map[key] = b.url;
+      // URL estável (addRandomSuffix:false) + query de versão pelo uploadedAt,
+      // pra o CDN servir a nova imagem quando o mesmo slot é reenviado.
+      const version = new Date(b.uploadedAt).getTime();
+      map[key] = `${b.url}?v=${version}`;
     }
     return Response.json(map, { headers: cacheHeaders() });
   } catch {
