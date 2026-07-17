@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getImageMap } from "@/lib/imageClient";
+import type { ImageSlotKey } from "@/lib/imageSlots";
 
 type MediaSlotProps = {
-  /** Caminho da foto real, ex: "/images/servico-guardiao.jpg". */
-  src: string;
+  /** Slot gerenciável (ex: "servico-guardiao"). */
+  slot: ImageSlotKey;
   alt: string;
   className?: string;
   /** Índice só para variar o gráfico de fallback entre cartões. */
@@ -18,27 +20,37 @@ const FALLBACKS: Record<number, string> = {
 };
 
 /**
- * Área de imagem com fallback gráfico da marca.
- * Enquanto a foto real (`src`) não existir em /public, mostra um gráfico
- * de água com o motivo das raias — o site nunca fica "quebrado".
- * Assim que o arquivo com o nome correto for adicionado, ele aparece
- * automaticamente, sem alterar o código.
+ * Área de imagem com resolução em cascata:
+ *   1. Imagem enviada pelo painel /admin (Vercel Blob).
+ *   2. Fallback local em /public/images/{slot}.jpg (se você commitar o arquivo).
+ *   3. Gráfico da marca (o site nunca fica "quebrado").
  */
 export default function MediaSlot({
-  src,
+  slot,
   alt,
   className = "",
   variant = 0,
 }: MediaSlotProps) {
+  const [src, setSrc] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    getImageMap().then((map) => {
+      if (!active) return;
+      setSrc(map[slot] ?? `/images/${slot}.jpg`);
+    });
+    return () => {
+      active = false;
+    };
+  }, [slot]);
 
   return (
     <div
       className={`relative overflow-hidden ${className}`}
       style={{ backgroundImage: FALLBACKS[variant] }}
     >
-      {/* Motivo de raias no fallback */}
       {!loaded && (
         <div
           aria-hidden="true"
@@ -50,7 +62,7 @@ export default function MediaSlot({
         />
       )}
 
-      {!failed && (
+      {src && !failed && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={src}

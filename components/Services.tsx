@@ -7,21 +7,21 @@ const LANES = [
   {
     label: "Raia 01",
     title: "Guardião de Piscina",
-    image: "/images/servico-guardiao.jpg",
+    slot: "servico-guardiao" as const,
     variant: 0 as const,
     body: "A legislação é clara: piscinas residenciais com mais de 6m x 6m, hotéis, clubes sociais/esportivos e academias são obrigados por lei a ter um guardião de piscina. Quem não cumpre está sujeito a multa — e o síndico ou administrador responde legalmente por qualquer acidente. Na Aqualife, todos os guardiões são certificados pelo GMAR — Grupamento Marítimo do Corpo de Bombeiros.",
   },
   {
     label: "Raia 02",
     title: "Tratamento de Água",
-    image: "/images/servico-tratamento.jpg",
+    slot: "servico-tratamento" as const,
     variant: 1 as const,
     body: "A água é um dos principais meios de contaminação — doenças como diarreia, giardíase e otite externa podem ser transmitidas por piscina mal tratada. Não abandone o tratamento no inverno: as chuvas aumentam o risco de contaminação por algas. Nossa equipe é formada pela FEEMA em tratamento químico de água, com 23 anos de experiência prática.",
   },
   {
     label: "Raia 03",
     title: "Vigilância e Manutenção",
-    image: "/images/servico-manutencao.jpg",
+    slot: "servico-manutencao" as const,
     variant: 2 as const,
     body: "Cadeira de guardião, equipamentos de primeiros socorros, guardião certificado, operador de manutenção, produtos químicos, registro junto ao CBMERJ-GMar, uniforme, substituto pra férias — fechando o contrato completo com a Aqualife, tudo isso passa a ser nossa responsabilidade. Incluindo guardião reserva/folguista pra cobrir férias e faltas, sem sua piscina ficar descoberta nenhum dia.",
   },
@@ -50,7 +50,7 @@ export default function Services() {
               <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-tinta/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-agua-profunda/10">
                 <div className="relative h-52 overflow-hidden">
                   <MediaSlot
-                    src={lane.image}
+                    slot={lane.slot}
                     alt={lane.title}
                     variant={lane.variant}
                     className="h-full w-full transition-transform duration-500 group-hover:scale-105"
