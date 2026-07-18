@@ -119,6 +119,7 @@ const config: Config = {
         "drop-wobble": "drop-wobble 5s ease-in-out infinite",
         "drop-run": "drop-run 16s ease-in infinite",
         "trail-fade": "trail-fade 16s ease-in infinite",
+        "sheen-slow": "sheen 13s ease-in-out infinite",
       },
     },
   },

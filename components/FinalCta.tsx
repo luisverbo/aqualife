@@ -1,7 +1,7 @@
 import { WHATSAPP_URL } from "@/lib/constants";
 import Reveal from "./Reveal";
 import { IconWhatsApp } from "./Icons";
-import { Droplets, Bubbles } from "./WaterEffects";
+import { WetScreen, Bubbles } from "./WaterEffects";
 import WaveDivider from "./WaveDivider";
 
 export default function FinalCta() {
@@ -23,7 +23,7 @@ export default function FinalCta() {
         className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,rgba(2,58,82,0.38),transparent_75%)]"
       />
       <Bubbles />
-      <Droplets />
+      <WetScreen />
 
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-6 px-6 py-28 text-center sm:px-8 sm:py-36">
         <Reveal className="flex flex-col items-center gap-6">
