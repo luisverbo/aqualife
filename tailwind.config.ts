@@ -97,6 +97,12 @@ const config: Config = {
           "90%": { transform: "translateY(72vh) scale(0.95, 1.1)", opacity: "0.6" },
           "94%, 100%": { transform: "translateY(80vh)", opacity: "0" },
         },
+        "trail-fade": {
+          "0%, 56%": { opacity: "0" },
+          "64%": { opacity: "1" },
+          "88%": { opacity: "0.75" },
+          "94%, 100%": { opacity: "0" },
+        },
       },
       animation: {
         "lane-ripple": "lane-ripple 8s ease-in-out infinite",
@@ -112,6 +118,7 @@ const config: Config = {
         "bubble-rise": "bubble-rise 9s ease-in infinite",
         "drop-wobble": "drop-wobble 5s ease-in-out infinite",
         "drop-run": "drop-run 16s ease-in infinite",
+        "trail-fade": "trail-fade 16s ease-in infinite",
       },
     },
   },
