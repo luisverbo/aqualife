@@ -32,23 +32,18 @@ export default function Services() {
   return (
     <section
       id="servicos"
-      className="relative scroll-mt-24 overflow-hidden bg-oceano"
+      className="relative scroll-mt-24 overflow-hidden bg-pedra"
     >
-      <div
-        aria-hidden="true"
-        className="animate-drift-slow absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-ciano/10 blur-[110px]"
-      />
-
       <div className="relative mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-28">
         <Reveal className="max-w-2xl">
-          <span className="font-mono text-xs font-medium uppercase tracking-[0.25em] text-azul-piscina">
+          <span className="font-mono text-xs font-medium uppercase tracking-[0.25em] text-azul-piscina-escuro">
             O que fazemos
           </span>
-          <h2 className="mt-3 font-heading text-3xl font-bold leading-tight text-papel sm:text-5xl">
+          <h2 className="mt-3 font-heading text-3xl font-bold leading-tight text-tinta sm:text-5xl">
             Três raias, um serviço{" "}
             <span className="text-gradient">completo</span>
           </h2>
-          <p className="mt-4 font-body text-base text-papel/70 sm:text-lg">
+          <p className="mt-4 font-body text-base text-tinta/65 sm:text-lg">
             Da vigilância à química da água — tudo dentro das normas do GMAR e
             da FEEMA.
           </p>
@@ -56,8 +51,8 @@ export default function Services() {
 
         <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-3">
           {LANES.map((lane, i) => (
-            <Reveal key={lane.title} delay={i * 100}>
-              <SpotlightCard className="glass group flex h-full flex-col overflow-hidden rounded-3xl transition-transform duration-300 hover:-translate-y-1.5">
+            <Reveal key={lane.title} delay={i * 100} className="h-full">
+              <SpotlightCard className="group flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-azul-piscina/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-azul-piscina/20">
                 <div className="relative h-52 overflow-hidden">
                   <MediaSlot
                     slot={lane.slot}
@@ -65,23 +60,23 @@ export default function Services() {
                     variant={lane.variant}
                     className="h-full w-full transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-oceano to-transparent" />
-                  <span className="absolute right-5 top-4 font-heading text-5xl font-bold text-papel/15">
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/55 to-transparent" />
+                  <span className="absolute right-5 top-4 font-heading text-5xl font-bold text-white/25">
                     {lane.number}
                   </span>
-                  <h3 className="absolute bottom-4 left-5 right-5 font-heading text-2xl font-bold text-papel">
+                  <h3 className="absolute bottom-4 left-5 right-5 font-heading text-2xl font-bold text-white drop-shadow-md">
                     {lane.title}
                   </h3>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="font-body text-sm leading-relaxed text-papel/70">
+                  <p className="font-body text-sm leading-relaxed text-tinta/75">
                     {lane.body}
                   </p>
                   <a
                     href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/link mt-6 inline-flex items-center gap-2 font-body text-sm font-semibold text-ciano"
+                    className="group/link mt-6 inline-flex items-center gap-2 font-body text-sm font-semibold text-azul-piscina-escuro"
                   >
                     Falar sobre este serviço
                     <IconArrow className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />

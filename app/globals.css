@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --agua-profunda: #03212e;
-  --oceano: #021821;
+  --agua-profunda: #02688e;
+  --oceano: #023a52;
   --azul-piscina: #00b8d9;
   --ciano: #22e1ff;
   --verde-vida: #9be15d;
-  --pedra: #dcedf2;
-  --papel: #f2fafc;
-  --tinta: #052330;
+  --pedra: #ddf1f7;
+  --papel: #f0fafd;
+  --tinta: #05374a;
 }
 
 * {
@@ -25,7 +25,7 @@ html {
 }
 
 body {
-  background-color: var(--oceano);
+  background-color: var(--papel);
   color: var(--tinta);
   overflow-x: hidden;
   overflow-x: clip;
@@ -33,62 +33,77 @@ body {
 
 ::selection {
   background: var(--azul-piscina);
-  color: #021821;
+  color: #fff;
 }
 
-/* Texto com degradê animado (ciano → azul) — assinatura do site */
+/* Degradê de texto para fundos CLAROS (azuis profundos da marca) */
 .text-gradient {
-  background: linear-gradient(120deg, #22e1ff 0%, #00b8d9 40%, #9be15d 100%);
-  background-size: 200% 200%;
+  background: linear-gradient(120deg, #00b8d9 0%, #0077a8 55%, #02688e 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: gradient-x 6s ease infinite;
 }
 
-@keyframes gradient-x {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+/* Degradê de texto para fundos AZUIS (quase branco → ciano claro) */
+.text-gradient-bright {
+  background: linear-gradient(120deg, #ffffff 0%, #c9f6ff 45%, #9be15d 130%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* Cartão de vidro sobre fundos escuros */
+/* Vidro sobre fundos azuis */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-/* Grade técnica sutil (fundos escuros) */
-.bg-grid {
+/* Cáusticas — reflexos de luz do fundo da piscina, em duas camadas */
+.caustics::before,
+.caustics::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
   background-image:
-    linear-gradient(rgba(0, 184, 217, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 184, 217, 0.06) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent);
-  -webkit-mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 40%,
-    black,
-    transparent
-  );
+    radial-gradient(ellipse 22% 16% at 25% 30%, rgba(255, 255, 255, 0.35), transparent 60%),
+    radial-gradient(ellipse 18% 12% at 70% 20%, rgba(255, 255, 255, 0.28), transparent 60%),
+    radial-gradient(ellipse 24% 18% at 50% 65%, rgba(255, 255, 255, 0.25), transparent 60%),
+    radial-gradient(ellipse 16% 12% at 85% 55%, rgba(255, 255, 255, 0.3), transparent 60%),
+    radial-gradient(ellipse 20% 14% at 12% 75%, rgba(255, 255, 255, 0.22), transparent 60%);
+  mix-blend-mode: overlay;
+  animation: caustic-a 13s ease-in-out infinite;
+}
+.caustics::after {
+  background-image:
+    radial-gradient(ellipse 20% 14% at 60% 40%, rgba(255, 255, 255, 0.3), transparent 60%),
+    radial-gradient(ellipse 26% 18% at 30% 60%, rgba(255, 255, 255, 0.22), transparent 60%),
+    radial-gradient(ellipse 14% 10% at 80% 80%, rgba(255, 255, 255, 0.28), transparent 60%);
+  animation: caustic-b 17s ease-in-out infinite reverse;
 }
 
-/* Borda com degradê (efeito "big tech") */
-.gradient-border {
-  position: relative;
-  background:
-    linear-gradient(var(--oceano), var(--oceano)) padding-box,
-    linear-gradient(135deg, rgba(34, 225, 255, 0.6), rgba(0, 184, 217, 0.1), rgba(155, 225, 93, 0.4))
-      border-box;
-  border: 1px solid transparent;
+@keyframes caustic-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(3%, 2%, 0) scale(1.06);
+  }
+}
+@keyframes caustic-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.04);
+  }
+  50% {
+    transform: translate3d(-3%, -2%, 0) scale(1);
+  }
 }
 
-/* Spotlight que segue o mouse nos cards (CSS vars setadas via JS) */
+/* Spotlight que segue o mouse nos cards */
 .spotlight {
   position: relative;
 }
@@ -101,7 +116,7 @@ body {
   transition: opacity 0.4s;
   background: radial-gradient(
     420px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(34, 225, 255, 0.12),
+    rgba(0, 184, 217, 0.14),
     transparent 55%
   );
   pointer-events: none;

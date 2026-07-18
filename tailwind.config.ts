@@ -9,16 +9,16 @@ const config: Config = {
     extend: {
       colors: {
         // Paleta baseada na logo AquaLife: ciano de piscina + verde "Life",
-        // sobre um oceano profundo quase preto (ar "big tech").
-        "agua-profunda": "#03212E",
-        oceano: "#021821",
+        // em tema claro e ensolarado de piscina.
+        "agua-profunda": "#02688E",
+        oceano: "#023A52",
         "azul-piscina": "#00B8D9",
         ciano: "#22E1FF",
         "azul-piscina-escuro": "#0090AC",
         "verde-vida": "#9BE15D",
-        pedra: "#DCEDF2",
-        papel: "#F2FAFC",
-        tinta: "#052330",
+        pedra: "#DDF1F7",
+        papel: "#F0FAFD",
+        tinta: "#05374A",
       },
       fontFamily: {
         heading: ["var(--font-bricolage)", "sans-serif"],
@@ -69,6 +69,27 @@ const config: Config = {
           "0%, 100%": { opacity: "0.55" },
           "50%": { opacity: "1" },
         },
+        "bubble-rise": {
+          "0%": { transform: "translateY(0) translateX(0)", opacity: "0" },
+          "10%": { opacity: "0.7" },
+          "50%": { transform: "translateY(-45vh) translateX(8px)" },
+          "90%": { opacity: "0.5" },
+          "100%": {
+            transform: "translateY(-90vh) translateX(-6px)",
+            opacity: "0",
+          },
+        },
+        "drop-wobble": {
+          "0%, 100%": { transform: "scale(1, 1)" },
+          "30%": { transform: "scale(1.04, 0.96)" },
+          "60%": { transform: "scale(0.97, 1.03)" },
+        },
+        "drop-slide": {
+          "0%, 55%": { transform: "translateY(0)", opacity: "0.9" },
+          "75%": { transform: "translateY(38vh)", opacity: "0.7" },
+          "82%": { transform: "translateY(60vh)", opacity: "0" },
+          "100%": { transform: "translateY(60vh)", opacity: "0" },
+        },
       },
       animation: {
         "lane-ripple": "lane-ripple 8s ease-in-out infinite",
@@ -81,6 +102,9 @@ const config: Config = {
         marquee: "marquee 28s linear infinite",
         "gradient-x": "gradient-x 6s ease infinite",
         "pulse-glow": "pulse-glow 4s ease-in-out infinite",
+        "bubble-rise": "bubble-rise 9s ease-in infinite",
+        "drop-wobble": "drop-wobble 5s ease-in-out infinite",
+        "drop-slide": "drop-slide 14s ease-in infinite",
       },
     },
   },

@@ -22,10 +22,7 @@ export default function SocialProof() {
   }, []);
 
   return (
-    <section
-      id="depoimentos"
-      className="relative scroll-mt-24 rounded-t-[2.5rem] bg-papel sm:rounded-t-[4rem]"
-    >
+    <section id="depoimentos" className="relative scroll-mt-24 bg-white">
       <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-28">
         <Reveal className="flex flex-col items-center text-center">
           <div className="flex items-center gap-1 text-azul-piscina">
@@ -45,7 +42,7 @@ export default function SocialProof() {
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((t, i) => (
             <Reveal key={i} delay={i * 80}>
-              <article className="flex h-full flex-col justify-between rounded-2xl bg-white p-7 shadow-sm ring-1 ring-tinta/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-azul-piscina/10">
+              <article className="flex h-full flex-col justify-between rounded-2xl bg-papel p-7 shadow-sm ring-1 ring-azul-piscina/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-azul-piscina/15">
                 <div>
                   <div className="flex gap-0.5 text-azul-piscina">
                     {Array.from({ length: 5 }).map((_, s) => (
