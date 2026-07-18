@@ -1,6 +1,6 @@
 import { WHATSAPP_URL } from "@/lib/constants";
 import { IconArrow, IconShield, IconDrop, IconStar } from "./Icons";
-import { WetScreen, Bubbles } from "./WaterEffects";
+import { Underwater, Bubbles } from "./WaterEffects";
 import WaveDivider from "./WaveDivider";
 
 export default function Hero() {
@@ -13,8 +13,8 @@ export default function Hero() {
           "linear-gradient(178deg, #12B2D8 0%, #0092C0 38%, #027FA6 68%, #02688E 100%)",
       }}
     >
-      {/* Cáusticas — reflexos de luz na água (suaves, pra não lavar o texto) */}
-      <div aria-hidden="true" className="caustics absolute inset-0 opacity-50" />
+      {/* Cáusticas — reflexos de luz na água */}
+      <div aria-hidden="true" className="caustics absolute inset-0 opacity-60" />
 
       {/* Brilho de sol discreto no topo */}
       <div
@@ -28,9 +28,9 @@ export default function Hero() {
         className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_58%,rgba(2,58,82,0.38),transparent_75%)]"
       />
 
-      {/* Bolhas subindo + película de tela molhada */}
+      {/* Cena subaquática: raios de sol, partículas, superfície e bolhas */}
+      <Underwater />
       <Bubbles />
-      <WetScreen />
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 items-center px-6 pb-28 pt-32 sm:px-8 sm:pt-36">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">

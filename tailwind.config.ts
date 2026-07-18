@@ -97,11 +97,24 @@ const config: Config = {
           "90%": { transform: "translateY(72vh) scale(0.95, 1.1)", opacity: "0.6" },
           "94%, 100%": { transform: "translateY(80vh)", opacity: "0" },
         },
-        "trail-fade": {
-          "0%, 56%": { opacity: "0" },
-          "64%": { opacity: "1" },
-          "88%": { opacity: "0.75" },
-          "94%, 100%": { opacity: "0" },
+        "surface-a": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-140px)" },
+        },
+        "surface-b": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-90px)" },
+        },
+        "ray-sway": {
+          "0%, 100%": { transform: "rotate(-15deg)" },
+          "50%": { transform: "rotate(-20deg)" },
+        },
+        "particle-drift": {
+          "0%": { transform: "translate3d(0, 0, 0)", opacity: "0" },
+          "18%": { opacity: "0.75" },
+          "50%": { transform: "translate3d(9px, -16px, 0)", opacity: "0.55" },
+          "82%": { opacity: "0.4" },
+          "100%": { transform: "translate3d(-7px, -30px, 0)", opacity: "0" },
         },
       },
       animation: {
@@ -117,9 +130,10 @@ const config: Config = {
         "pulse-glow": "pulse-glow 4s ease-in-out infinite",
         "bubble-rise": "bubble-rise 9s ease-in infinite",
         "drop-wobble": "drop-wobble 5s ease-in-out infinite",
-        "drop-run": "drop-run 16s ease-in infinite",
-        "trail-fade": "trail-fade 16s ease-in infinite",
-        "sheen-slow": "sheen 13s ease-in-out infinite",
+        "surface-a": "surface-a 7s linear infinite",
+        "surface-b": "surface-b 4.5s linear infinite",
+        "ray-sway": "ray-sway 11s ease-in-out infinite",
+        "particle-drift": "particle-drift 12s ease-in-out infinite",
       },
     },
   },
