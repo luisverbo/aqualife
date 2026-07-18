@@ -19,7 +19,7 @@ export default function Logo({ className = "", tone = "light" }: LogoProps) {
         <span className="text-verde-vida">Life</span>
         <span
           className={`ml-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.2em] ${
-            tone === "light" ? "text-white/70" : "text-tinta/50"
+            tone === "light" ? "text-white/90" : "text-tinta/50"
           }`}
         >
           Piscinas

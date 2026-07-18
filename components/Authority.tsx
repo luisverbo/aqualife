@@ -25,12 +25,12 @@ export default function Authority() {
             <p className="relative mt-6 font-mono text-xs font-medium uppercase tracking-[0.25em] text-white/80">
               GMAR · FEEMA · CBMERJ
             </p>
-            <h2 className="relative mt-5 font-heading text-2xl font-bold leading-snug sm:text-4xl">
+            <h2 className="relative mt-5 font-heading text-2xl font-bold leading-snug [text-shadow:0_2px_6px_rgba(2,40,60,0.4)] sm:text-4xl">
               Piscina de condomínio é responsabilidade do síndico — e qualquer
               acidente vira{" "}
-              <span className="text-gradient-bright">problema jurídico</span>.
+              <span className="text-verde-vida">problema jurídico</span>.
             </h2>
-            <p className="relative mx-auto mt-6 max-w-2xl font-body text-base text-white/85 sm:text-lg">
+            <p className="relative mx-auto mt-6 max-w-2xl font-body text-base font-medium text-white [text-shadow:0_1px_4px_rgba(2,40,60,0.35)] sm:text-lg">
               A Aqualife trabalha dentro das normas do GMAR e da FEEMA, pra sua
               administração dormir tranquila.
             </p>

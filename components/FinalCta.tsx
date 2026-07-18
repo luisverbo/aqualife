@@ -17,17 +17,23 @@ export default function FinalCta() {
       {/* Onda no topo — saindo da seção clara */}
       <WaveDivider className="absolute left-0 top-0" fill="#F0FAFD" flip />
 
-      <div aria-hidden="true" className="caustics absolute inset-0" />
+      <div aria-hidden="true" className="caustics absolute inset-0 opacity-50" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_50%,rgba(2,58,82,0.38),transparent_75%)]"
+      />
       <Bubbles />
       <Droplets />
 
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-6 px-6 py-28 text-center sm:px-8 sm:py-36">
         <Reveal className="flex flex-col items-center gap-6">
-          <h2 className="font-heading text-4xl font-bold leading-[1.05] text-white drop-shadow-[0_2px_18px_rgba(2,58,82,0.35)] sm:text-6xl">
+          <h2 className="font-heading text-4xl font-bold leading-[1.05] text-white [text-shadow:0_2px_6px_rgba(2,40,60,0.45),0_6px_28px_rgba(2,40,60,0.35)] sm:text-6xl">
             Sua piscina{" "}
-            <span className="text-gradient-bright">segura e cristalina</span>
+            <span className="text-verde-vida [text-shadow:0_2px_6px_rgba(2,40,60,0.5)]">
+              segura e cristalina
+            </span>
           </h2>
-          <p className="max-w-xl font-body text-base text-white/90 sm:text-lg">
+          <p className="max-w-xl font-body text-base font-medium text-white [text-shadow:0_1px_4px_rgba(2,40,60,0.4)] sm:text-lg">
             Peça um orçamento sem compromisso. Atendemos condomínios, clubes e
             residências no Rio de Janeiro — resposta rápida pelo WhatsApp.
           </p>
@@ -40,7 +46,7 @@ export default function FinalCta() {
             <IconWhatsApp className="h-6 w-6" />
             Falar com a Aqualife agora
           </a>
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/70">
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-white/90 [text-shadow:0_1px_3px_rgba(2,40,60,0.45)]">
             Sem compromisso · resposta no mesmo dia
           </p>
         </Reveal>

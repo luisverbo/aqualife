@@ -10,16 +10,22 @@ export default function Hero() {
       className="relative flex min-h-[100svh] w-full flex-col overflow-hidden"
       style={{
         background:
-          "linear-gradient(178deg, #27CDEB 0%, #00B8D9 34%, #0090C2 66%, #02688E 100%)",
+          "linear-gradient(178deg, #12B2D8 0%, #0092C0 38%, #027FA6 68%, #02688E 100%)",
       }}
     >
-      {/* Cáusticas — reflexos de luz na água */}
-      <div aria-hidden="true" className="caustics absolute inset-0" />
+      {/* Cáusticas — reflexos de luz na água (suaves, pra não lavar o texto) */}
+      <div aria-hidden="true" className="caustics absolute inset-0 opacity-50" />
 
-      {/* Brilho de sol no topo */}
+      {/* Brilho de sol discreto no topo */}
       <div
         aria-hidden="true"
-        className="animate-pulse-glow absolute -top-24 left-1/4 h-96 w-[42rem] -translate-x-1/2 rounded-full bg-white/25 blur-[100px]"
+        className="animate-pulse-glow absolute -top-32 left-1/4 h-80 w-[38rem] -translate-x-1/2 rounded-full bg-white/15 blur-[100px]"
+      />
+
+      {/* Escurecimento na área do texto pra dar contraste */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_58%,rgba(2,58,82,0.38),transparent_75%)]"
       />
 
       {/* Bolhas subindo + gotas na tela */}
@@ -28,7 +34,7 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 items-center px-6 pb-28 pt-32 sm:px-8 sm:pt-36">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-          <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-white">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/35 bg-oceano/30 px-4 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-verde-vida opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-verde-vida" />
@@ -36,13 +42,15 @@ export default function Hero() {
             23 anos protegendo piscinas no RJ
           </span>
 
-          <h1 className="mt-8 font-heading text-[2.6rem] font-bold leading-[1.03] text-white drop-shadow-[0_2px_18px_rgba(2,58,82,0.35)] sm:text-6xl md:text-7xl">
+          <h1 className="mt-8 font-heading text-[2.6rem] font-bold leading-[1.03] text-white [text-shadow:0_2px_6px_rgba(2,40,60,0.45),0_6px_28px_rgba(2,40,60,0.35)] sm:text-6xl md:text-7xl">
             A referência em{" "}
-            <span className="text-gradient-bright">piscinas seguras</span> no
-            Rio de Janeiro
+            <span className="text-verde-vida [text-shadow:0_2px_6px_rgba(2,40,60,0.5)]">
+              piscinas seguras
+            </span>{" "}
+            no Rio de Janeiro
           </h1>
 
-          <p className="mt-7 max-w-2xl font-body text-base leading-relaxed text-white/90 sm:text-lg md:text-xl">
+          <p className="mt-7 max-w-2xl font-body text-base font-medium leading-relaxed text-white [text-shadow:0_1px_4px_rgba(2,40,60,0.4)] sm:text-lg md:text-xl">
             Manutenção completa, tratamento de água e guardiões salva-vidas
             certificados para condomínios, clubes e parques aquáticos.
           </p>
@@ -52,14 +60,14 @@ export default function Hero() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-9 py-4 font-body text-base font-bold text-agua-profunda shadow-[0_8px_32px_rgba(2,58,82,0.35)] transition-all hover:scale-[1.04] hover:shadow-[0_10px_44px_rgba(2,58,82,0.45)] active:scale-95"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-9 py-4 font-body text-base font-bold text-agua-profunda shadow-[0_8px_32px_rgba(2,40,60,0.4)] transition-all hover:scale-[1.04] hover:shadow-[0_10px_44px_rgba(2,40,60,0.5)] active:scale-95"
             >
               Solicitar orçamento
               <IconArrow className="h-5 w-5 transition-transform group-hover:translate-x-1" />
             </a>
             <a
               href="#servicos"
-              className="glass inline-flex items-center justify-center rounded-full px-9 py-4 font-body text-base font-semibold text-white transition-colors hover:bg-white/25"
+              className="inline-flex items-center justify-center rounded-full border border-white/45 bg-oceano/25 px-9 py-4 font-body text-base font-semibold text-white backdrop-blur-md transition-colors hover:bg-oceano/40"
             >
               Conhecer serviços
             </a>
@@ -82,9 +90,9 @@ export default function Hero() {
 
 function TrustBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
-    <div className="flex items-center gap-2 text-white/85">
-      <span className="text-white">{icon}</span>
-      <span className="font-mono text-[11px] font-medium uppercase tracking-[0.15em]">
+    <div className="flex items-center gap-2 text-white [text-shadow:0_1px_3px_rgba(2,40,60,0.45)]">
+      <span>{icon}</span>
+      <span className="font-mono text-[11px] font-bold uppercase tracking-[0.15em]">
         {label}
       </span>
     </div>
