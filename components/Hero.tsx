@@ -10,7 +10,7 @@ export default function Hero() {
       className="relative flex min-h-[100svh] w-full flex-col overflow-hidden"
       style={{
         background:
-          "linear-gradient(178deg, #12B2D8 0%, #0092C0 38%, #027FA6 68%, #02688E 100%)",
+          "linear-gradient(178deg, #0CA2CB 0%, #008DBA 38%, #027CA3 68%, #02688E 100%)",
       }}
     >
       {/* Cáusticas — reflexos de luz na água */}

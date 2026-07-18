@@ -13,25 +13,25 @@
 
 function WaterSurface() {
   return (
-    <div className="absolute inset-x-0 top-0 h-32 overflow-hidden">
-      {/* claridade da superfície */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/45 via-white/12 to-transparent" />
+    <div className="absolute inset-x-0 top-0 h-24 overflow-hidden">
+      {/* claridade da superfície — sutil, sem lavar o header/logo */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-white/5 to-transparent" />
       {/* ondulações — duas camadas deslizando em velocidades diferentes */}
       <div
-        className="animate-surface-a absolute -top-1 left-0 h-14 w-[calc(100%+140px)]"
+        className="animate-surface-a absolute -top-2 left-0 h-12 w-[calc(100%+140px)]"
         style={{
           backgroundImage:
-            "radial-gradient(ellipse 70px 26px at 70px 0px, rgba(255,255,255,0.55), transparent 72%)",
-          backgroundSize: "140px 56px",
+            "radial-gradient(ellipse 70px 24px at 70px 0px, rgba(255,255,255,0.30), transparent 72%)",
+          backgroundSize: "140px 52px",
           backgroundRepeat: "repeat-x",
         }}
       />
       <div
-        className="animate-surface-b absolute -top-1 left-0 h-10 w-[calc(100%+90px)]"
+        className="animate-surface-b absolute -top-2 left-0 h-9 w-[calc(100%+90px)]"
         style={{
           backgroundImage:
-            "radial-gradient(ellipse 45px 18px at 45px 0px, rgba(255,255,255,0.35), transparent 72%)",
-          backgroundSize: "90px 40px",
+            "radial-gradient(ellipse 45px 16px at 45px 0px, rgba(255,255,255,0.18), transparent 72%)",
+          backgroundSize: "90px 36px",
           backgroundRepeat: "repeat-x",
         }}
       />
@@ -77,9 +77,9 @@ function GodRays() {
         <div
           className="animate-pulse-glow h-full w-full blur-2xl"
           style={{
-            opacity: 0.4,
+            opacity: 0.32,
             background:
-              "linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.25) 40%, transparent 75%)",
+              "linear-gradient(to bottom, rgba(255,255,255,0.5) 5%, rgba(255,255,255,0.22) 40%, transparent 75%)",
             mixBlendMode: "screen",
           }}
         />
