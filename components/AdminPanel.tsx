@@ -26,7 +26,17 @@ export default function AdminPanel() {
   const [testiSaving, setTestiSaving] = useState(false);
   const [testiMsg, setTestiMsg] = useState("");
 
+  // Diagnóstico de configuração do servidor
+  const [status, setStatus] = useState<{
+    hasPassword: boolean;
+    hasBlob: boolean;
+  } | null>(null);
+
   useEffect(() => {
+    fetch("/api/admin/status")
+      .then((r) => (r.ok ? r.json() : null))
+      .then(setStatus)
+      .catch(() => setStatus(null));
     fetch("/api/images")
       .then((r) => (r.ok ? r.json() : {}))
       .then((m: Record<string, string>) => setCurrent(m))
@@ -174,6 +184,50 @@ export default function AdminPanel() {
             Sair
           </button>
         </header>
+
+        {/* ── DIAGNÓSTICO ───────────────────────────────────── */}
+        {status && (!status.hasPassword || !status.hasBlob) && (
+          <div className="mt-8 rounded-2xl border border-amber-300 bg-amber-50 p-5">
+            <p className="font-body text-sm font-bold text-amber-900">
+              ⚠ Configuração incompleta na Vercel — o upload não vai funcionar
+              até resolver:
+            </p>
+            <ul className="mt-3 space-y-2 font-body text-sm text-amber-900">
+              {!status.hasBlob && (
+                <li>
+                  <b>Blob store não conectado.</b> Vercel → seu projeto →{" "}
+                  <b>Storage</b> → <b>Create Database → Blob</b> → dê um nome →{" "}
+                  <b>Connect Project</b>. Isso cria a variável{" "}
+                  <code className="rounded bg-amber-100 px-1">
+                    BLOB_READ_WRITE_TOKEN
+                  </code>{" "}
+                  sozinho.
+                </li>
+              )}
+              {!status.hasPassword && (
+                <li>
+                  <b>Senha não definida.</b> Vercel → <b>Settings → Environment
+                  Variables</b> → adicione{" "}
+                  <code className="rounded bg-amber-100 px-1">
+                    ADMIN_PASSWORD
+                  </code>{" "}
+                  com uma senha forte.
+                </li>
+              )}
+              <li className="pt-1">
+                Depois de configurar, faça um <b>Redeploy</b> (Deployments → ⋯ →
+                Redeploy) e recarregue esta página.
+              </li>
+            </ul>
+          </div>
+        )}
+        {status && status.hasPassword && status.hasBlob && (
+          <div className="mt-8 rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
+            <p className="font-body text-sm font-medium text-emerald-800">
+              ✓ Tudo configurado. Pode enviar as fotos.
+            </p>
+          </div>
+        )}
 
         {/* ── FOTOS ─────────────────────────────────────────── */}
         <h2 className="mt-10 font-heading text-lg font-bold text-tinta">
