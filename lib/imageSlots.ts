@@ -5,6 +5,11 @@
  */
 export const IMAGE_SLOTS = [
   {
+    key: "logo",
+    label: "Logo da empresa",
+    hint: "PNG com fundo transparente (ideal). Aparece no topo e no rodapé.",
+  },
+  {
     key: "servico-guardiao",
     label: "Serviço — Guardião de Piscina",
     hint: "Foto do guardião / cadeira de salva-vidas. ~800×600.",

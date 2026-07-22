@@ -52,7 +52,11 @@ export default function AdminPanel() {
   async function uploadFile(slot: ImageSlotKey, file: File) {
     setSlots((s) => ({ ...s, [slot]: { status: "uploading" } }));
     try {
-      const optimized = await prepareImage(file, slot === "og" ? 1200 : 1600);
+      const optimized = await prepareImage(
+        file,
+        slot === "og" ? 1200 : slot === "logo" ? 640 : 1600,
+        slot === "logo" ? 0.92 : 0.82,
+      );
       if (optimized.size > 4 * 1024 * 1024) {
         throw new Error(
           "Imagem muito grande mesmo após otimizar. Envie um JPG/PNG/WebP.",
