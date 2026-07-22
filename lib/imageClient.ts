@@ -8,7 +8,7 @@ let cache: Promise<Record<string, string>> | null = null;
 
 export function getImageMap(): Promise<Record<string, string>> {
   if (!cache) {
-    cache = fetch("/api/images")
+    cache = fetch("/api/images", { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : {}))
       .catch(() => ({}));
   }

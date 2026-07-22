@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 const headers: HeadersInit = {
-  "Cache-Control": "public, max-age=30, s-maxage=60, stale-while-revalidate=300",
+  "Cache-Control": "no-store, must-revalidate",
 };
 
 /**

@@ -36,7 +36,7 @@ export async function GET() {
 
 function cacheHeaders(): HeadersInit {
   return {
-    // CDN cacheia por 60s; navegador revalida rápido.
-    "Cache-Control": "public, max-age=30, s-maxage=60, stale-while-revalidate=300",
+    // Sempre fresco — troca de foto no painel aparece no site na hora.
+    "Cache-Control": "no-store, must-revalidate",
   };
 }
