@@ -18,7 +18,7 @@ const headers: HeadersInit = {
  */
 export async function GET() {
   try {
-    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    if (!process.env.BLOB_READ_WRITE_TOKEN && !process.env.BLOB_STORE_ID) {
       return Response.json(DEFAULT_TESTIMONIALS, { headers });
     }
     const { blobs } = await list({ prefix: TESTIMONIALS_BLOB });

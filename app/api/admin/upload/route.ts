@@ -21,9 +21,9 @@ export async function POST(req: Request) {
   if (!expected) {
     return json({ error: "ADMIN_PASSWORD não configurada no servidor." }, 500);
   }
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+  if (!process.env.BLOB_READ_WRITE_TOKEN && !process.env.BLOB_STORE_ID) {
     return json(
-      { error: "Vercel Blob não configurado (BLOB_READ_WRITE_TOKEN ausente)." },
+      { error: "Vercel Blob não conectado a este projeto." },
       500,
     );
   }

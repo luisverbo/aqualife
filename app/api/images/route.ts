@@ -12,7 +12,11 @@ export const runtime = "nodejs";
  */
 export async function GET() {
   try {
-    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    // Sem token clássico nem OIDC (store id) configurado → devolve vazio.
+    if (
+      !process.env.BLOB_READ_WRITE_TOKEN &&
+      !process.env.BLOB_STORE_ID
+    ) {
       return Response.json({}, { headers: cacheHeaders() });
     }
     const { blobs } = await list({ prefix: BLOB_PREFIX });

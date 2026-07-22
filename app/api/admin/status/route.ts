@@ -8,6 +8,9 @@ export const runtime = "nodejs";
 export async function GET() {
   return Response.json({
     hasPassword: Boolean(process.env.ADMIN_PASSWORD),
-    hasBlob: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+    // Token clássico OU conexão OIDC (BLOB_STORE_ID) contam como configurado.
+    hasBlob: Boolean(
+      process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID,
+    ),
   });
 }
